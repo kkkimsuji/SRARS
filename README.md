@@ -1,5 +1,5 @@
 # SRARS: Utilizing Advanced Transformers for Summarized Review-Aware Recommender System
-
+![Last Commit](https://img.shields.io/github/last-commit/kkkimsuji/Rec-SSP?style=flat-square)
 [![Paper](https://img.shields.io/badge/IEEE_Access-Paper-blue)](https://doi.org/10.1109/ACCESS.2025.3598937)
 [![DOI](https://img.shields.io/badge/DOI-10.1109/ACCESS.2025.3598937-red)](https://doi.org/10.1109/ACCESS.2025.3598937)
 
