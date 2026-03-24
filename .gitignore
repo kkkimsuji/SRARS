@@ -9,9 +9,9 @@ __pycache__/
 *.pyc
 
 # Data (Crucial: do not upload large data to GitHub)
-data/raw/*.json.gz
-data/processed/*.pkl
-data/processed/*.parquet
+data/processed/
+data/raw/*
+!data/raw/SampleData.json.gz
 
 # Model weights
 model/*.h5
