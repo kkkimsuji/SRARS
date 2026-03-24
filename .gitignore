@@ -1,4 +1,20 @@
+# Virtual Environment
 .venv/
-data/
+venv/
+env/
+
+# Python cache
 __pycache__/
 *.pyc
+
+# Data (Crucial: do not upload large data to GitHub)
+data/raw/*.json.gz
+data/processed/*.pkl
+data/processed/*.parquet
+
+# Model weights
+model/*.h5
+model/*.keras
+
+# OS specific
+.DS_Store
