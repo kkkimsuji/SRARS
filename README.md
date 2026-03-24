@@ -11,26 +11,53 @@ This repository contains the official implementation of the following paper:
 
 This repository provides the official implementation of **SRARS (Summarized Review-Aware Recommender System)**, a review-aware recommendation model based on summarized review information. SRARS applies **BART-based abstractive summarization** to generate concise review representations, models high-order user-item interactions via an **outer product**, and refines them using **multi-head self-attention**. Experiments on three Amazon review datasets demonstrate that SRARS outperforms strong baselines in terms of **MAE** and **RMSE**.
 
-## Environment Requirement
-- Python 
-- TensorFlow 
-- NumPy
-- Pandas
-- scikit-learn
-- transformers
+## Environment & Requirements
 
-  
+This project is implemented in **Python 3.8+**. To ensure reproducibility, please install the specific versions of the libraries listed below.
+
+### 1. Key Dependencies
+| Category | Library | Minimum Version | Description |
+| :--- | :--- | :--- | :--- |
+| **Deep Learning** | `TensorFlow` | `2.10.0` | Main model architecture & training |
+| **NLP** | `Transformers` | `4.25.0` | BART-based feature extraction |
+| **NLP Backend** | `PyTorch` | `1.12.0` | Backend for HuggingFace Transformers |
+| **Analysis** | `Pandas` | `1.5.0` | Data manipulation and storage |
+| **Matrix** | `NumPy` | `1.23.0` | Efficient numerical operations |
+| **ML Tools** | `scikit-learn` | `1.1.0` | Data splitting and metrics |
+
+### 2. Utility Libraries
+- `PyYAML` (>=6.0): For parsing the `config.yaml` file.
+- `PyArrow` (>=10.0.0): For high-performance Parquet file handling.
+- `tqdm` (>=4.64.0): For real-time progress bars during embedding extraction.
+
+### 3. Installation
+We recommend using a virtual environment. You can install all dependencies at once using the following command:
+
+```bash
+pip install -r requirements.txt
+```
 ## Repository Structure
 
-```plaintext
-├── data/
-├── src/
-├── model/
-├── main.py
-├── requirements.txt
-└── README.md
-```
+The repository is organized as follows to ensure a clear workflow from data preprocessing to model evaluation:
 
+```text
+SRARS/
+├── data/
+│   ├── raw/                # Original datasets (e.g., SampleData.json.gz)
+│   └── processed/          # Preprocessed files (pickles, parquets, embeddings)
+├── model/
+│   ├── proposed.py         # SRARS model architecture (Self-Attention)
+│   └── srars_best_model.h5 # Saved best model weights after training
+├── src/
+│   ├── bart.py             # Feature extraction using BART encoder
+│   ├── config.yaml         # Centralized hyperparameters and path settings
+│   ├── data_loader.py      # Data cleaning and review-set generation
+│   └── trainer.py          # Training pipeline (split, train, evaluate)
+├── main.py                 # Main entry point to run the full pipeline
+├── requirements.txt        # List of Python dependencies
+├── .gitignore              # Git ignore configuration
+└── README.md               # Project documentation and results
+```
 ## Model Description
 
 **SRARS (Summarized Review-Aware Recommender System)** is composed of three modules: **review feature extraction**, **interaction learning**, and **rating prediction**. 
