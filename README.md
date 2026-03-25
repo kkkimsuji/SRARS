@@ -30,12 +30,8 @@ This project is implemented in **Python 3.8+**. To ensure reproducibility, pleas
 - `PyArrow` (>=10.0.0): For high-performance Parquet file handling.
 - `tqdm` (>=4.64.0): For real-time progress bars during embedding extraction.
 
-### 3. Installation
-We recommend using a virtual environment. You can install all dependencies at once using the following command:
 
-```bash
-pip install -r requirements.txt
-```
+
 ## Repository Structure
 
 The repository is organized as follows to ensure a clear workflow from data preprocessing to model evaluation:
@@ -58,6 +54,31 @@ SRARS/
 ├── .gitignore              # Git ignore configuration
 └── README.md               # Project documentation and results
 ```
+
+## How to Run
+### 1. Installation & Environment Setup
+We recommend using a virtual environment to manage dependencies.
+
+```bash
+python -m venv .venv
+
+pip install -r requirements.txt
+```
+### 2. Data Preparation
+The model requires the dataset to be placed in the specific directory defined in the structure.
+- **Prepare Data**: Place your original dataset (e.g., SampleData.json.gz) into the data/raw/ directory.
+- **Automatic Preprocessing**: When you run the main script, the pipeline will automatically handle data cleaning and BART-based feature extraction via ```src/data_loader.py``` and ```src/bart.py```.
+
+### 3. Configuration
+You can customize hyperparameters and file paths in the centralized config file.
+- File Path: ```src/config.yaml```
+
+### 4. Train and Evaluate
+Once the environment and data are ready, execute the following command to start the full workflow (Preprocessing → Training → Evaluation):
+```
+python main.py
+```
+
 ## Model Description
 
 **SRARS (Summarized Review-Aware Recommender System)** is composed of three modules: **review feature extraction**, **interaction learning**, and **rating prediction**. 
